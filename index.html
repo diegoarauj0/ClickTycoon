@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        @keyframes Passar {
+            0% {
+                top: 60%;
+            }
+            50% {
+                top: 0%;
+            }
+            100% {
+                top: 60%;
+            }
+        }
+        @keyframes Erro {
+            0% {
+                border-left: 3px solid rgb(255, 255, 255);
+            }
+            50% {
+                border-left: 3px solid rgb(255, 0, 0);
+            }
+            100% {
+                border-left: 3px solid rgb(255, 255, 255);
+            }
+        }
+        @keyframes Acerto {
+            0% {
+                border-left: 3px solid rgb(255, 255, 255);
+            }
+            50% {
+                border-left: 3px solid rgb(51, 255, 0);
+            }
+            100% {
+                border-left: 3px solid rgb(255, 255, 255);
+            }
+        }
+        .Animar {
+            animation-name: Passar;
+            animation-duration: 3s;  
+        }
+        .Erro {
+            animation: Erro 1s;
+        }
+        .Acerto {
+            animation: Acerto 1s;
+        }
+        main {
+            width: 100vw;
+            height: 100vh;
+            background: rgb(68, 45, 1) url('img/Vecteezy-Wood-Background_bv0321_generated.jpg') center center no-repeat fixed;
+            background-size: cover;
+            position: relative;
+        }
+        div#Info {
+            position: absolute;
+            top: 13%;
+            left: 1%;
+            background-color: black;
+            width: 220px;
+            height: 100px;
+            border: 3px solid gray;
+            border-radius: 3px;
+            box-shadow: 2px 1px 0px rgba(0, 0, 0, 0.5);
+            z-index: 3;
+        }
+        div#Info > p {
+            font-family: 'Righteous', Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: left;
+            line-height: 20px;
+            padding: 10px;
+            font-size: 1.2em;
+            color: yellow;
+        }
+        div#Valor {
+            position: absolute;
+            top: 3%;
+            left: 1%;
+            background-color: black;
+            width: 130px;
+            height: 50px;
+            border: 3px solid gray;
+            border-radius: 3px;
+            box-shadow: 2px 1px 0px rgba(0, 0, 0, 0.5);
+            z-index: 3;
+        }
+        div#Valor > p {
+            font-family: 'Righteous', Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: center;
+            line-height: 48px;
+            font-size: 2em;
+            color: yellow;
+        }
+        div#Valor > p::after {
+            content: '$';
+        }
+        div#Valor > p::before {
+            content: '$';
+        }
+        div#Cartão {
+            background: gray url('img/Cartão.png') center center no-repeat fixed;
+            background-size: cover;
+            outline: 2px solid gray;
+            width: 225px;
+            height: 325px;
+            border-radius: 10px;
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50% ,-50%);
+            z-index: 0;
+            box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.411);
+        }
+        div#Maquina {
+            background-color: rgb(237, 240, 242);
+            width: 240px;
+            height: 130px;
+            border-radius: 0px 0px 10px 10px;
+            box-shadow: 3px 5px 1px #00000080;
+            border: 4px solid rgb(156, 159, 161);
+            border-top: 0px;
+            padding-top: 6px;
+
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+
+            flex-direction: row;
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            z-index: 1;
+        }
+        div.Botão {
+            background-color: rgb(16, 18, 20);
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            position: relative;
+            margin: 0px 10px;
+            box-shadow: 2px 2px 1px #00000054;
+        }
+        div.Botão > p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2em;
+            color: white;
+            font-family: 'Righteous',Arial, Helvetica, sans-serif;
+            font-weight: lighter;
+            
+        }
+        div#BarraLateral {
+            width: 60px;
+            right: 0%;
+            border-left: 3px solid white;
+            height: 100vh;
+            background-color: black;
+            position: absolute;
+            z-index: 2;
+        }
+        div.Opção {
+            transition: 0.5s;
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            margin: 22px auto;
+        }
+        div.Opção:hover {
+            transition: 0.5s;
+            transform: scale(1.1);
+        }
+        div.Opção > img {
+            width: 50px;
+            height: 50px;
+        }
+        div.Opção > p {
+            text-align: center;
+            color: white;
+        }
+    </style>
+    <link rel="shortcut icon" href="img/Cartão.png" type="image/x-icon">
+</head>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false"> 
+    <main>
+        <div id="Maquina">
+            <div class="Botão">
+                <p>4</p>
+            </div>
+            <div class="Botão">
+                <p>5</p>
+            </div>
+            <div class="Botão">
+                <p>6</p>
+            </div>
+            <div class="Botão">
+                <p>1</p>
+            </div>
+            <div class="Botão">
+                <p>2</p>
+            </div>
+            <div class="Botão">
+                <p>3</p>
+            </div>
+        </div>
+        <div id="Info">
+            <p>Gerando 0 Acada 0 Segundos <br> <br> Cartão ta Valendo 0</p>
+        </div>
+        <div id="Valor">
+            <p>0</p>
+        </div>
+        
+        <div id="Cartão">
+
+        </div>
+        <div id="BarraLateral" >
+            <div class="Opção" onclick="if(Dinheiro >= 10 * x2 && x2 * 10 < 999){Dinheiro = Dinheiro - 10 * x2, x2 ++, Atualizar(), Acerto()}else{Erro()}">
+                <img src="img/2x.png" alt="">
+                <p id="x2">10$</p>
+            </div>
+            <div class="Opção">
+                <img src="img/Atualizar.png" alt="" onclick="if(Dinheiro >= 10 * Automatico && Automatico * 10 < 999){Dinheiro = Dinheiro - 10 * Automatico, Automatico ++, Atualizar(), Acerto()}else{Erro()}">
+                <p id="Automatico">10</p>
+            </div>
+        </div>
+    </main>
+    <script>
+        const Cartao = document.getElementById('Cartão')
+        const Valor = document.getElementById('Valor').getElementsByTagName('p')[0]
+        const Barra = document.getElementById('BarraLateral')
+        const Valorx2 = document.getElementById('x2')
+        const ValorAutomatico = document.getElementById('Automatico')
+        var info = document.getElementById('Info').getElementsByTagName('p')[0]
+        var AniCartao = false
+        var Espera = false
+        var EsperaErro = false
+        var Dinheiro = 0
+        var x2 = 1
+        var Automatico = 1
+        Cartao.addEventListener('click', function() {
+            if (AniCartao == false) {
+                Cartao.classList.add('Animar')
+                AniCartao = true
+            }
+            if (Espera == false) {
+                Espera = true
+                console.log('foi')
+                setTimeout(function(){
+                Cartao.classList.remove('Animar')
+                AniCartao = false
+                Espera = false
+                Atualizar('Mais')
+                }, 2900)
+            }  
+        })
+        function Atualizar(a) {
+            if (a == 'Mais' && x2 + Dinheiro <= 999) {
+                Dinheiro = x2 + Dinheiro
+            }
+            Valor.innerHTML = Dinheiro
+            Valorx2.innerHTML = 10 * x2
+            ValorAutomatico.innerHTML = 10 * Automatico
+            info.innerHTML = `Gerando ${Automatico}$ Acada 3 Segundos <br> <br> Cartão ta Valendo ${x2}$`
+        }
+        function Erro() {
+            Barra.classList.add('Erro')
+            if (EsperaErro == false) {
+                EsperaErro = true
+                setTimeout(function(){Barra.classList.remove('Erro'), EsperaErro = false},1000)
+            }
+        }
+        function Acerto() {
+            Barra.classList.add('Acerto')
+            if (EsperaErro == false) {
+                EsperaErro = true
+                setTimeout(function(){Barra.classList.remove('Acerto'), EsperaErro = false},1000)
+            }
+        }
+        setInterval(() => {
+            if (Dinheiro < 999) {
+                Dinheiro = Dinheiro + Automatico
+                Atualizar()
+            } 
+        }, 3000);
+        Atualizar()
+    </script>
+</body>
+</html>
